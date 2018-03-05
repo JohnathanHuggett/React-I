@@ -1,5 +1,5 @@
 import React from 'react';
-import TodosInput from './TodosInput';
+import TodosInput from './TodosInput.js';
 
 const App = () => (
   <div>
