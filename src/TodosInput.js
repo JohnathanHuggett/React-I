@@ -20,7 +20,8 @@ class TodosInput extends Component {
   addTodo = (event) => {
     event.preventDefault();
     const todoList = this.state.list;
-    todoList.push(this.state.newTodo);
+    //todoList.push(this.state.newTodo);
+    todoList.push({ 'text': this.state.newTodo, 'completed': false })
     this.setState({
       newTodo: '',
       list: todoList
@@ -34,10 +35,10 @@ class TodosInput extends Component {
     }
     return (
       <div style={styles}>
-        {this.state.list.map(item => <TodosItem listItem={item} />)}
+        {this.state.list.map(item => <div key={item.text}> <TodosItem listItem={item} /></div>)}
 
         <form onSubmit={this.addTodo}>
-          <input type="text" onChange={this.handleTodo} placeHolder="Add new todo" value={this.state.newTodo} />
+          <input type="text" onChange={this.handleTodo} placeholder="Add new todo" value={this.state.newTodo} />
         </form>
       </div>
     );
