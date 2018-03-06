@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import TodosItem from './TodosItem'
+
 
 class TodosInput extends Component {
   constructor() {
     super();
     this.state = {
       list: [],
-      newTodo: ''
+      newTodo: '',
     };
   }
 
@@ -26,16 +28,18 @@ class TodosInput extends Component {
   };
 
   render() {
+    const styles = {
+      color: 'white',
+      fontSize: 25,
+    }
     return (
-      <div>
-        {this.state.list.map(item => <div>{item}</div>)}
+      <div style={styles}>
+        {this.state.list.map(item => <TodosItem listItem={item} />)}
 
         <form onSubmit={this.addTodo}>
           <input type="text" onChange={this.handleTodo} placeHolder="Add new todo" value={this.state.newTodo} />
-
         </form>
       </div>
-
     );
   }
 }
