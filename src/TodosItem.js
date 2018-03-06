@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 class TodosItem extends Component {
-    constructor(text) {
+    constructor() {
         super();
-        this.text = text;
-        this.state = { clicked: false};
+        this.text = 'boo',
+            this.state = {
+                clicked: false,
+                text: ''
+            };
     }
 
     getClick = () => {
@@ -12,7 +15,7 @@ class TodosItem extends Component {
     }
 
     render() {
-        const styles = this.state.clicked ? { textDecoration: 'line-through'} : { textDecoration: 'none'};
+        const styles = this.state.clicked ? { textDecoration: 'line-through' } : { textDecoration: 'none' };
         return (
             <div style={styles} onClick={this.getClick}>{this.props.listItem}</div>
         );
