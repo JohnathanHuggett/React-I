@@ -7,16 +7,13 @@ class TodosInput extends Component {
     super();
     this.state = {
       list: [],
-      newTodo: new TodosItem()
-
+      newTodo: '',
     };
   }
 
   handleTodo = (event) => {
     this.setState({
-      newTodo: {
-        text: event.target.value
-      }
+      newTodo: event.target.value
     });
   };
 
@@ -24,12 +21,22 @@ class TodosInput extends Component {
     event.preventDefault();
     const todoList = this.state.list;
     //todoList.push(this.state.newTodo);
-    todoList.push({ 'text': this.state.newTodo, 'completed': false })
+    if (this.state.newTodo !== '') {
+      todoList.push({ 'text': this.state.newTodo, 'completed': false })
+      this.setState({
+        newTodo: '',
+        list: todoList
+      });
+    };
+  }
+
+  childFunc = (index) => {
+    const todoList = this.state.list;
+    todoList.splice(index, 1, 0);
     this.setState({
-      // newTodo: '',
-      list: todoList
+      list: todoList,
     });
-  };
+  }
 
   render() {
     const styles = {
@@ -38,20 +45,12 @@ class TodosInput extends Component {
     }
     return (
       <div style={styles}>
-<<<<<<< HEAD
-    {
-      this.state.list.map(obj => {
-        return <TodosItem listItem={obj.text} />
-      })
-    }
-=======
-        {this.state.list.map(item => <div key={item.text}> <TodosItem listItem={item} /></div>)}
->>>>>>> a9b3800013bef1607c4c5293c07724911b3ff461
+        {this.state.list.map((item, i) => <TodosItem key={i} index={i} action={this.childFunc} listItem={item} />)}
 
-    <form onSubmit={this.addTodo}>
-      <input type="text" onChange={this.handleTodo} placeholder="Add new todo" value={this.state.newTodo} />
-    </form>
-      </div >
+        <form onSubmit={this.addTodo}>
+          <input type="text" onChange={this.handleTodo} placeholder="Add new todo" value={this.state.newTodo} />
+        </form>
+      </div>
     );
   }
 }

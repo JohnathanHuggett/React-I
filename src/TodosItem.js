@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
+// import './TodosItem.css'
 
 class TodosItem extends Component {
-    constructor() {
+    constructor(text) {
         super();
-<<<<<<< HEAD
-        this.text = 'boo',
-            this.state = {
-                clicked: false,
-                text: ''
-            };
-=======
         this.text = text;
-        this.state = {completed: false};
+        this.state = { completed: false, x: 'x' };
 
->>>>>>> a9b3800013bef1607c4c5293c07724911b3ff461
     }
 
     getClick = () => {
-       this.setState({completed: !this.state.completed});
+        this.setState({ completed: !this.state.completed });
+    }
+
+    handleXClick = () => {
+        this.props.action(this.props.index);
+        this.setState({ x: !this.state.x });
+
+    }
+
+    toggleX = () => {
+        return this.props.index > -1;
     }
 
     render() {
-<<<<<<< HEAD
-        const styles = this.state.clicked ? { textDecoration: 'line-through' } : { textDecoration: 'none' };
-=======
-        const styles = this.state.completed ? { textDecoration: 'line-through'} : { textDecoration: 'none'};
->>>>>>> a9b3800013bef1607c4c5293c07724911b3ff461
         return (
-            <div style={this.state.completed ? { textDecoration: 'line-through'} : { textDecoration: 'none'}} onClick={this.getClick}>{this.props.listItem.text}</div>
+            <div>
+                <div className="x" style={this.state.x.length > '0' ? { display: 'flex' } : { display: 'none' }} onClick={this.handleXClick}>{this.state.x}</div>
+                <div className="text" style={this.state.completed ? { textDecoration: 'line-through' } : { textDecoration: 'none' }} onClick={this.getClick}>{this.props.listItem.text}</div>
+            </div>
         );
     }
 }

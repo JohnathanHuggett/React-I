@@ -1,0 +1,9 @@
+.x {
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+}
+
+.text {
+    border: 2px solid white;
+}
