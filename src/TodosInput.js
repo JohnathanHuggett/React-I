@@ -21,12 +21,22 @@ class TodosInput extends Component {
     event.preventDefault();
     const todoList = this.state.list;
     //todoList.push(this.state.newTodo);
-    todoList.push({ 'text': this.state.newTodo, 'completed': false })
+    if (this.state.newTodo !== '') {
+      todoList.push({ 'text': this.state.newTodo, 'completed': false })
+      this.setState({
+       newTodo: '',
+       list: todoList
+      });
+    };
+  }
+
+  childFunc = (index) => {
+    const todoList = this.state.list;
+    todoList.splice(index, 1, 0);
     this.setState({
-      newTodo: '',
-      list: todoList
+      list: todoList,
     });
-  };
+  }
 
   render() {
     const styles = {
@@ -35,7 +45,7 @@ class TodosInput extends Component {
     }
     return (
       <div style={styles}>
-        {this.state.list.map(item => <div key={item.text}> <TodosItem listItem={item} /></div>)}
+        {this.state.list.map((item, i) => <TodosItem key={i} index={i} action={this.childFunc} listItem={item} />)}
 
         <form onSubmit={this.addTodo}>
           <input type="text" onChange={this.handleTodo} placeholder="Add new todo" value={this.state.newTodo} />

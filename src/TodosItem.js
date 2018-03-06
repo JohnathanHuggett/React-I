@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+// import './TodosItem.css'
 
 class TodosItem extends Component {
     constructor(text) {
         super();
         this.text = text;
-        this.state = {completed: false};
+        this.state = {completed: false, x: 'x'};
 
     }
 
@@ -12,10 +13,22 @@ class TodosItem extends Component {
        this.setState({completed: !this.state.completed});
     }
 
+    handleXClick = () => {
+       this.props.action(this.props.index);
+       this.setState({x: !this.state.x});
+       
+    }
+
+    toggleX = () => {
+        return this.props.index > -1;
+    }
+
     render() {
-        const styles = this.state.completed ? { textDecoration: 'line-through'} : { textDecoration: 'none'};
         return (
-            <div style={this.state.completed ? { textDecoration: 'line-through'} : { textDecoration: 'none'}} onClick={this.getClick}>{this.props.listItem.text}</div>
+            <div>
+                <div className="x" style={this.state.x.length > '0' ? { display: 'flex'} : { display: 'none'}} onClick={this.handleXClick}>{this.state.x}</div>
+                <div className="text" style={this.state.completed ? { textDecoration: 'line-through'} : { textDecoration: 'none'}} onClick={this.getClick}>{this.props.listItem.text}</div>
+            </div>
         );
     }
 }
