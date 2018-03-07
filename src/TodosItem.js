@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './TodosItem.css'
 
 class TodosItem extends Component {
     constructor(text) {
@@ -19,13 +18,10 @@ class TodosItem extends Component {
 
     }
 
-    toggleX = () => {
-        return this.props.index > -1;
-    }
 
     render() {
         return (
-            <div>
+            <div className="box">
                 <div className="x" style={this.state.x.length > '0' ? { display: 'flex' } : { display: 'none' }} onClick={this.handleXClick}>{this.state.x}</div>
                 <div className="text" style={this.state.completed ? { textDecoration: 'line-through' } : { textDecoration: 'none' }} onClick={this.getClick}>{this.props.listItem.text}</div>
             </div>

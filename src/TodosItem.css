@@ -1,9 +1,29 @@
+.box {
+  display: flex;
+  width: 200px;
+  line-height: 3rem;
+  justify-content: space-between;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
 .x {
-    width: 30px;
-    height: 30px;
-    border: 2px solid black;
+  margin: 0 10%;
+  cursor: pointer;
+}
+
+.x:hover {
+  color: gray;
+  transform: scale(1.5);
+  transform: rotateZ(-90deg);
 }
 
 .text {
-    border: 2px solid white;
+  margin: 0 10%;
+  cursor: pointer;
+}
+
+.text:hover {
+  color: gray;
+  transform: scale(1.5);
 }

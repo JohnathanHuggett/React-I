@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TodosItem from './TodosItem'
 
-
 class TodosInput extends Component {
   constructor() {
     super();
@@ -39,12 +38,9 @@ class TodosInput extends Component {
   }
 
   render() {
-    const styles = {
-      color: 'white',
-      fontSize: 25,
-    }
+
     return (
-      <div style={styles}>
+      <div className="list">
         {this.state.list.map((item, i) => <TodosItem key={i} index={i} action={this.childFunc} listItem={item} />)}
 
         <form onSubmit={this.addTodo}>

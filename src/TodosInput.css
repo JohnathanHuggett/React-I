@@ -1,0 +1,14 @@
+.list {
+  /* max-width: 1000px; */
+  /* width: 50%; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 10px outset white;
+  align-items: center;
+  padding: 10px 0;
+  /* width: 200px; */
+}
+input {
+  width: 200px;
+}
